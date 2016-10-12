@@ -1,0 +1,19 @@
+{
+  "name": "checkpoint1",
+  "version": "1.0.0",
+  "description": "An application that reads a json file and index them to make search possible on them",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "search",
+    "index",
+    "json"
+  ],
+  "author": "Atanda Abdulsemiu",
+  "license": "ISC",
+  "dependencies": {
+    "jshint": "^2.9.3"
+  }
+}
