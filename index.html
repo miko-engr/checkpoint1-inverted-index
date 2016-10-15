@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Inverted Index</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+        <link rel="stylesheet" href="https://cdn.rawgit.com/CreativeIT/getmdl-select/master/getmdl-select.min.css">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="src/inverted-index.js"></script>
+
+    </head>
+    <body>
+        <!-- Always shows a header, even in smaller screens. -->
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">Inverted Index</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+            </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Title</span>
+            <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="file" id="filegangan">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="fileRead" style="float:right">Read File</button>
+            </div>
+                <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" id="table">
+                <thead>
+                    <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Material</th>
+                    <th>Quantity</th>
+                    <th>Unit price</th>
+                    </tr>
+                </thead>
+                </table>
+            </div>
+            <aside id="load" style="float:right">
+                <div>
+                    <span class="mdl-badge" data-badge="" id='list'>Document</span>
+                </div>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="index" style="float:right">Index File</button>
+            </aside>
+        </main>
+        
+        </div>
+        <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+        <script defer src="https://cdn.rawgit.com/CreativeIT/getmdl-select/master/getmdl-select.min.js"></script>
+        <script src="src/app.js"></script>
+        
+        
+    </body>
+</html>
