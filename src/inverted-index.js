@@ -1,25 +1,3 @@
-$('document').ready(function () {
-    var wick;
-    var read = new Index();
-    $('#fileRead').on('click', function () {
-        var fileDetails = document.getElementById('filegangan').files[0];
-        console.log(fileDetails);
-        var fileName = fileDetails.name;
-        read.readFile(fileDetails, function() {
-            wick = read.files;
-            // console.log(wick.docs.length);
-        });
-        $('#load').append('<span>Your File has been successfully loaded</span>');
-    });
-    $('#index').on('click', function(){
-        alert('I am Index');
-        var numberofDocs = read.getIndex(wick);
-        // console.log(numberofDocs);
-        $('#list').attr('data-badge',numberofDocs);
-        });
-});
-
-
 class Index {
     constructor(){
         this.files = {};
