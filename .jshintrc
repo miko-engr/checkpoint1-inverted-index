@@ -32,9 +32,11 @@
     "esversion":6,
     "moz": true, 
     "jquery":true,
+    "jasmine":true,
     "globals": {
         "console":true,
         "alert":true,
-        "document":true
+        "document":true,
+        "FileReader":true
     }
 }
