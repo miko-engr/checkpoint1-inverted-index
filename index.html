@@ -4,11 +4,9 @@
         <title>Inverted Index</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
-        <link rel="stylesheet" href="https://cdn.rawgit.com/CreativeIT/getmdl-select/master/getmdl-select.min.css">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
         <script src="src/inverted-index.js"></script>
-
     </head>
     <body>
         <!-- Always shows a header, even in smaller screens. -->
@@ -40,30 +38,39 @@
         <main class="mdl-layout__content">
             <div class="page-content">
                 <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="file" id="filegangan">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="fileRead" style="float:right">Read File</button>
+                <input class="mdl-textfield__input" type="file" id="file">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="fileUpload" style="float:right">Upload File</button>
             </div>
-                <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" id="table">
+                <table class="mdl-data-table mdl-shadow--2dp" id="table">
                 <thead>
                     <tr>
-                    <th class="mdl-data-table__cell--non-numeric">Material</th>
-                    <th>Quantity</th>
-                    <th>Unit price</th>
+                    <th class="mdl-data-table__cell--non-numeric">Words</th>
+                    <th>Document 1</th>
+                    <th>Document 2</th>
                     </tr>
                 </thead>
+                <tbody></tbody>
                 </table>
             </div>
             <aside id="load" style="float:right">
                 <div>
-                    <span class="mdl-badge" data-badge="" id='list'>Document</span>
+                    <span class="mdl-badge" data-badge="" id="list">Document</span>
                 </div>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="index" style="float:right">Index File</button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="index" style="float:right">Index File          
+                </button>
+                <button id="demo-menu-lower-left"
+                        class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons">more_vert</i>
+                </button>
+
+                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                    for="demo-menu-lower-left" id="name">
+                </ul>
             </aside>
         </main>
         
         </div>
         <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
-        <script defer src="https://cdn.rawgit.com/CreativeIT/getmdl-select/master/getmdl-select.min.js"></script>
         <script src="src/app.js"></script>
         
         
