@@ -1,21 +1,5 @@
+"use strict";
 class Index {
-    constructor(){
-        this.files = {};
-    }
-    readFile(fileDetails,callback){
-        let fileName = fileDetails.name;
-        let _this = this;
-        let fs = new FileReader();
-        fs.readAsText(fileDetails,'UTF-8');
-        fs.onload = function(files){
-            let result = JSON.parse(files.target.result);
-            _this.files ={
-                name: fileName,
-                docs:result
-            };
-            callback();
-        };
-    }
 
     getIndex(data){
         let fileIndex = [];
@@ -25,19 +9,17 @@ class Index {
         return fileIndex.length;
     }
     createIndex(document){
-        let details = [];
+        let contents = document.docs;
         if (typeof document !=='object') {
+            console.log('Aww, Snap!!!');
             return false;
         }
         else{
-            for(let i=0;i<Object.keys(document);i++){
-                details.push('Document '+(i+1));
-            }
-            return details;
+            return contents;
         }
     }
     searchIndex(terms){
-        let reff = new showOccurences();
+        let reff = new showOccurrences();
         terms.trim();
         if (typeof terms !== 'string' || terms === '' || (terms.trim()) === '') {
             console.log('We didn\'t forget to check though!!!');
@@ -57,20 +39,28 @@ class Index {
 
 }
 
-var showOccurences = function () {
-    var merge = [];
-    var wordOccurrence = {};
-
-    for (var i = 0; i < Object.keys(file); i++) {
-        merge.push(file[i].text.split(' '));
-        var keywords = [].concat.apply([], merge);
-        var mySet = new Set(keywords);
-        for (let key of mySet.keys()) {
-            if (!wordOccurrence.hasOwnProperty(key)) {
-                wordOccurrence[key] = [];
-                }
-                wordOccurrence[key].push('Document ' + (1 + i));
-            }
-        }
-        return wordOccurrence;
+let showOccurrences = function (file) {
+    let wordOccurrence = {};
+	let merge = [];
+	for (let i=0; i <file.length; i++){
+        let clean = tokenize(file[i].text);
+		merge.push(clean.split(' '));
+		let keywords = [].concat.apply([], merge);
+		let mySet = new Set(keywords);
+		for (let key of mySet.keys()) {
+			if (clean.includes(key)){
+				if (!wordOccurrence.hasOwnProperty(key)){
+					wordOccurrence[key] = [];
+				}
+				wordOccurrence[key].push('Document '+(1+i));
+			}
+		}
+	}
+	return wordOccurrence;
     };
+
+    function tokenize(tokens) {
+        var newToken = tokens.replace(/[^a-z0-9]+/gi, ' ').toLowerCase();
+        //send out the new token
+        return newToken;
+    }
