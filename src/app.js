@@ -33,11 +33,24 @@ $('document').ready(function () {
         $('#list').attr('data-badge',numberofDocs);
         var docArray = read.createIndex(details);
         var display = new showOccurrences(docArray);
-        console.log(Object.keys(display));
+        // console.log(display);
         var key = Object.keys(display);
         $(Object.keys(display)).each(function(keys){
             var value = key[keys];
-            $('#table').append("<tbody><tr><td>"+value+"</td><td>Love</td></tr></tbody>");
+            let doc = display[value];
+            if(value === ''){
+                console.log('Not a valid key');
+            }
+            else{
+                if(doc[0]==='Document 1'){
+                $('#table').append("<tbody><tr><td>"+value+"</td><td>X</td><td></td></tr></tbody>");
+            }
+            else if(doc[0] ==='Document 2' || doc[1]==='Document 2') {
+                $('#table').append("<tbody><tr><td>"+value+"</td><td></td><td>X</td></tr></tbody>");
+            }
+            }
+            
+            // $('#table').append("<tbody><tr><td>"+value+"</td><td>Love</td></tr></tbody>");
         });
         });
      
