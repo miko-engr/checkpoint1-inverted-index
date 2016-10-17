@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Inverted Index</title>
+        <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
@@ -17,13 +18,15 @@
             <span class="mdl-layout-title">Inverted Index</span>
             <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
-            <!-- Navigation. We hide it in small screens. -->
-            <nav class="mdl-navigation mdl-layout--large-screen-only">
-                <a class="mdl-navigation__link" href="">Link</a>
-                <a class="mdl-navigation__link" href="">Link</a>
-                <a class="mdl-navigation__link" href="">Link</a>
-                <a class="mdl-navigation__link" href="">Link</a>
-            </nav>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+              <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" id="search">
+              <label class="mdl-textfield__label" for="search">Enter your query...</label>
+            </div>
+          </div>
             </div>
         </header>
         <div class="mdl-layout__drawer">
@@ -41,17 +44,6 @@
                 <input class="mdl-textfield__input" type="file" id="file">
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="fileUpload" style="float:right">Upload File</button>
             </div>
-                <table class="mdl-data-table mdl-shadow--2dp" id="table">
-                <thead>
-                    <tr>
-                    <th class="mdl-data-table__cell--non-numeric">Words</th>
-                    <th>Document 1</th>
-                    <th>Document 2</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-                </table>
-            </div>
             <aside id="load" style="float:right">
                 <div>
                     <span class="mdl-badge" data-badge="" id="list">Document</span>
@@ -67,6 +59,18 @@
                     for="demo-menu-lower-left" id="name">
                 </ul>
             </aside>
+                <table class="mdl-data-table mdl-shadow--2dp full-width" id="table">
+                <thead>
+                    <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Words</th>
+                    <th>Document 1</th>
+                    <th>Document 2</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                </table>
+            </div>
+
         </main>
         
         </div>
