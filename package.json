@@ -4,6 +4,7 @@
   "description": "An application that reads a json file and index them to make search possible on them",
   "main": "index.js",
   "scripts": {
+    "start":"gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -14,6 +15,11 @@
   "author": "Atanda Abdulsemiu",
   "license": "ISC",
   "dependencies": {
+    "browser-sync": "^2.17.5",
     "jshint": "^2.9.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0"
   }
 }
