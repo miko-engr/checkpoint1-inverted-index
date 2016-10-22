@@ -33,10 +33,14 @@
     "moz": true, 
     "jquery":true,
     "jasmine":true,
+    "node":true,
     "globals": {
         "console":true,
         "alert":true,
         "document":true,
-        "FileReader":true
+        "FileReader":true,
+        "app":true,
+        "angular":true,
+        "scope":true
     }
 }
