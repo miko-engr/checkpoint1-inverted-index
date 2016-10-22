@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
     <head>
         <title>Inverted Index</title>
         <link rel="stylesheet" href="css/index.css">
@@ -7,9 +7,11 @@
         <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
         <script src="src/inverted-index.js"></script>
+        <script src="src/pageCtrl.js"></script>
     </head>
-    <body>
+    <body ng-controller="pageController">
         <!-- Always shows a header, even in smaller screens. -->
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header">
@@ -18,15 +20,6 @@
             <span class="mdl-layout-title">Inverted Index</span>
             <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-              <i class="material-icons">search</i>
-            </label>
-            <div class="mdl-textfield__expandable-holder">
-              <input class="mdl-textfield__input" type="text" id="search">
-              <label class="mdl-textfield__label" for="search">Enter your query...</label>
-            </div>
-          </div>
             </div>
         </header>
         <div class="mdl-layout__drawer">
@@ -41,15 +34,14 @@
         <main class="mdl-layout__content">
             <div class="page-content">
                 <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="file" id="file">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="fileUpload" style="float:right">Upload File</button>
-            </div>
+                    <input class="mdl-textfield__input" type="file" id="file">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="fileUpload()" style="float:right">Upload File</button>
+                </div>
             <aside id="load" style="float:right">
                 <div>
-                    <span class="mdl-badge" data-badge="" id="list">Document</span>
+                    <span class="mdl-badge" data-badge="{{data}}" id="list">Document</span>
                 </div>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="index" style="float:right">Index File          
-                </button>
+
                 <button id="demo-menu-lower-left"
                         class="mdl-button mdl-js-button mdl-button--icon">
                 <i class="material-icons">more_vert</i>
@@ -57,25 +49,37 @@
 
                 <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
                     for="demo-menu-lower-left" id="name">
+                    <li ng-repeat ="(key, value) in documents" ng-click="index(key)">{{value.name}}</li>
                 </ul>
             </aside>
-                <table class="mdl-data-table mdl-shadow--2dp full-width" id="table">
+                <table class="mdl-data-table mdl-shadow--2dp half left" id="table" >
                 <thead>
                     <tr>
                     <th class="mdl-data-table__cell--non-numeric">Words</th>
-                    <th>Document 1</th>
-                    <th>Document 2</th>
+                    <th ng-repeat="(index,value) in docs">{{'Document '+(index+1)}}</th>
                     </tr>
+                    
                 </thead>
-                <tbody></tbody>
+                <tbody><tr ng-repeat ="(key,value) in docArray">
+                        <td>{{key}}</td>
+                        <td ng-repeat="(index,value) in docs">
+                        <span ng-if="docArray[key].includes(index)">X</span>
+                        </td>
+                    </tr></tbody>
                 </table>
+            </div>
+            <div id="result">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="terms">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="search()" id="search" style="float:right">Search</button>
+                </div>
             </div>
 
         </main>
         
         </div>
         <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
-        <script src="src/app.js"></script>
+        <!--<script src="src/app.js"></script>-->
         
         
     </body>
