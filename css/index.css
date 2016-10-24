@@ -1,0 +1,33 @@
+#load{
+    position:relative;
+    top:0.7em;
+}
+tr th{
+    text-align: center;
+}
+input{
+    position: relative;
+    left:1.0em;
+}
+#search{
+    position:relative;
+    top:1.0em;
+}
+.left{
+    width:50%;
+    float:left;
+    position: relative;
+    top:5.0em;
+}
+
+#result{
+    position: relative;
+    top:4.0em;
+}
+#text{
+    z-index: 999;
+    position: absolute;
+    float: right;
+    right:5.0em;
+    top:4.0em;
+}
