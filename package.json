@@ -4,8 +4,8 @@
   "description": "An application that reads a json file and index them to make search possible on them",
   "main": "index.js",
   "scripts": {
-    "start":"gulp",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp",
+    "test": "node_modules/karma/bin/karma start karma.conf.js --single-run"
   },
   "keywords": [
     "search",
@@ -20,6 +20,10 @@
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-connect": "^5.0.0"
+    "gulp-connect": "^5.0.0",
+    "jasmine": "^2.5.2",
+    "karma": "^1.3.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-jasmine": "^1.0.2"
   }
 }
