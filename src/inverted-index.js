@@ -2,9 +2,9 @@
 class Index {
 
     getIndex(data){
-        let fileIndex = [];
+        let fileIndex = {};
         for(let i=0;i<data.docs.length;i++) {
-            fileIndex.push(i);
+            fileIndex[data.name] = [i];
         }
         return fileIndex;
     }
