@@ -1,6 +1,10 @@
-"use strict";
+'use strict';
 class Index {
-
+/**
+ * Get Index method that indexes JSON file
+ * @param data (key,value pair)
+ * @return fileIndex
+ */
     getIndex(data){
         let fileIndex = {};
         for(let i=0;i<data.docs.length;i++) {
@@ -8,6 +12,11 @@ class Index {
         }
         return fileIndex;
     }
+    /**
+     * Create Index method that indexes text content of uploaded file
+     * @param file
+     * @return wordOccurrence
+     */
     createIndex(file){
             let wordOccurrence = {};
             let merge = [];
@@ -29,6 +38,11 @@ class Index {
             }
             return wordOccurrence;
     }
+    /**
+     * Search Index Method that searches uploaded file with the aid of the created index
+     * @param terms(words to be searched), reff
+     * @return result
+     */
     searchIndex(terms,reff){
         let result = {};
         if (typeof terms !== 'string' || terms === '' || (terms.trim()) === '') {
@@ -51,7 +65,11 @@ class Index {
     }
 
 }
-
+/**
+ * Function that regularizes input
+ * @param tokens
+ * @return newToken
+ */
     function tokenize(tokens) {
         var newToken = tokens.replace(/[^a-z0-9]+/gi, ' ').trim().toLowerCase();
         //send out the new token

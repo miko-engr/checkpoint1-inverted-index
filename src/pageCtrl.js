@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 let app = angular.module('app',[]);
 app.controller('pageController', function($scope) {
     let details = {};
@@ -37,11 +37,13 @@ app.controller('pageController', function($scope) {
     $scope.search = function() {
         let terms = document.getElementById('terms').value;
         $scope.docArray = read.searchIndex(terms,$scope.docArray);
-        console.log($scope.result);
     };
     
 });
 
+/**
+ * Checks if contents of the file is in JSON format
+ */
 function isJson(str) {
     try {
         JSON.parse(str);
