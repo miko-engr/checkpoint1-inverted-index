@@ -9,7 +9,7 @@ gulp.task('browser-sync', function () {
     browserSync.init({
         server: {
             baseDir: "./",
-            port: process.env.PORT||3000
+            port: process.env.PORT || 3000
         }
     });
 });
