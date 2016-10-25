@@ -24,7 +24,6 @@ app.controller('pageController', function($scope) {
             $scope.$apply();
           };
              $scope.name = fileDetails.name;
-             read.getIndex(details);
         }
         
     };
