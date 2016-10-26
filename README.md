@@ -14,6 +14,7 @@ An Inverted-index consists of a list of all the unique words that appear in any 
 ```
 - Indexing of uploaded file
 - Searching of each indexed file
+
 ## Usage
 This can be accessed [here](https://aatanda-inverted-index.herokuapp.com).
 
