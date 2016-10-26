@@ -16,12 +16,15 @@ An Inverted-index consists of a list of all the unique words that appear in any 
 - Searching of each indexed file
 ## Usage
 This can be accessed [here](https://aatanda-inverted-index.herokuapp.com).
+
 It can be used locally with the following steps
+
 - Clone this repository
 ``` git clone https://github.com/andela-aatanda/checkpoint1-inverted-index.git ```
 - Move into the repository directory
 ``` cd checkpoint1-inverted-index ```
 - Run npm install to install all dependencies ([Node](nodejs.org) must be installed on your local machine already)
+
 ### Dependencies
 1. connect
 1. gulp
