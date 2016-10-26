@@ -30,7 +30,9 @@ It can be used locally with the following steps
 1. gulp
 1. gulp-connect
 1. serve-static
+
 ```npm install```
+
 - Start the application with ```npm start```
 
 ## More information
