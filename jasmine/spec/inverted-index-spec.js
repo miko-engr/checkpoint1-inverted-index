@@ -29,9 +29,10 @@ describe("Read book data", function () {
 });
 
 describe("Check Class properties", function () {
-beforeEach(function() {
-    this.indexInstance = new Index();
-  });
+    
+    beforeEach(function() {
+        this.indexInstance = new Index();
+    });
 
     it("should have get index property", function () {
         expect(typeof this.indexInstance.getIndex ==='function').toBeTruthy();

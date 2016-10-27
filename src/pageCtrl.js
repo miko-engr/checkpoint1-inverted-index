@@ -9,7 +9,7 @@ app.controller('pageController', function($scope) {
         if(fileDetails===undefined){
             console.log('No file chosen');
         }
-        else{
+        else {
             let fileObj = new FileReader();
             fileObj.readAsText(fileDetails);
             fileObj.onload = function(file) {

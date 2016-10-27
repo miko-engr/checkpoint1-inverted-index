@@ -5,7 +5,7 @@ class Index {
  * @param data (key,value pair)
  * @return fileIndex
  */
-    getIndex(data){
+    getIndex(data) {
         let fileIndex = {};
         for(let i=0;i<data.docs.length;i++) {
             fileIndex[data.name] = [i];
@@ -17,12 +17,12 @@ class Index {
      * @param file
      * @return wordOccurrence
      */
-    createIndex(file){
+    createIndex(file) {
             let wordOccurrence = {};
             let merge = [];
             let keywords =[];
             let mySet;
-            for (let i=0; i <file.length; i++){
+            for (let i=0; i < file.length; i++){
                 let clean = tokenize(file[i].text);
                 merge.push(clean.split(' '));
                 keywords = [].concat.apply([], merge);
@@ -43,7 +43,7 @@ class Index {
      * @param terms(words to be searched), reff
      * @return result
      */
-    searchIndex(terms,reff){
+    searchIndex(terms,reff) {
         let result = {};
         if (typeof terms !== 'string' || terms === '' || (terms.trim()) === '') {
             console.log('We didn\'t forget to check though!!!');
