@@ -34,17 +34,14 @@ beforeEach(function() {
   });
 
     it("should have get index property", function () {
-        let get = this.indexInstance;
-        expect(typeof get.getIndex ==='function').toBeTruthy();
+        expect(typeof this.indexInstance.getIndex ==='function').toBeTruthy();
     });
 
     it("should have create index property", function () {
-        let create = this.indexInstance;
-        expect(typeof create.createIndex ==='function').toBeTruthy();
+        expect(typeof this.indexInstance.createIndex ==='function').toBeTruthy();
     });
     it("should have search property", function () {
-        let search = this.indexInstance;
-        expect(typeof search.searchIndex ==='function').toBeTruthy();
+        expect(typeof this.indexInstance.searchIndex ==='function').toBeTruthy();
     });
 });
 
