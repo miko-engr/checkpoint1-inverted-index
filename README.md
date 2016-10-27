@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/andela-aatanda/checkpoint1-inverted-index.svg?branch=development)](https://travis-ci.org/andela-aatanda/checkpoint1-inverted-index.svg?branch=development)
+[![Test Coverage](https://codeclimate.com/github/andela-aatanda/checkpoint1-inverted-index/badges/coverage.svg)](https://codeclimate.com/github/andela-aatanda/checkpoint1-inverted-index/coverage)
 # Inverted-index
 This Application is an implementation of Elastic Search indexing algorithm which is designed to allow for fas full-text search.
 An Inverted-index consists of a list of all the unique words that appear in any document, and for each word, a list of the documents in which it appears.
