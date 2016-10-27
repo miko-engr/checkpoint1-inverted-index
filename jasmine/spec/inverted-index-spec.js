@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 var mockFiles = [{
             "title": "Alice of in Wonderland",
             "text": "Alice falls into a rabbit shit hole and enters a world full of imagination."
