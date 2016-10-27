@@ -41,6 +41,6 @@
         "FileReader":true,
         "app":true,
         "angular":true,
-        "scope":true
+        "Index":true
     }
 }
