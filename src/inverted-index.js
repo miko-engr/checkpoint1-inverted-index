@@ -44,12 +44,13 @@ class Index {
      * @return result
      */
     searchIndex(terms,reff) {
+        let token = tokenize(terms);
         let result = {};
         if (typeof terms !== 'string' || terms === '' || (terms.trim()) === '') {
             console.log('We didn\'t forget to check though!!!');
         }
         else {
-            let words = terms.split(' ');
+            let words = token.split(' ');
             for (let i = 0; i < words.length; i++) {
                 if (reff[words[i]] === undefined) {
                     console.log(words[i] + ' : ' + 'Not Found!!!!');

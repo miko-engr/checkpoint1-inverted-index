@@ -6,10 +6,11 @@ app.controller('pageController', function($scope) {
     let read = new Index();
     $scope.fileUpload = function() {
         let fileDetails = document.getElementById('file').files[0];
-        if(fileDetails===undefined){
-            console.log('No file chosen');
+        if(fileDetails===undefined || !fileDetails.name.toLowerCase().match(/\.json$/)){
+            $scope.message = 'Invalid Selection';
         }
         else {
+            $scope.message = '';
             let fileObj = new FileReader();
             fileObj.readAsText(fileDetails);
             fileObj.onload = function(file) {
