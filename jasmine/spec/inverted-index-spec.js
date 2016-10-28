@@ -95,3 +95,25 @@ describe("Populate Index", function () {
     });
 
 });
+
+describe('Search Index', function() {
+    
+    beforeEach(function() {
+        this.indexInstance = new Index();
+    });
+
+    it('should search and return an object that contains result', function() {
+        const term = 'We are very unusual in alliance';
+        expect(typeof this.indexInstance.searchIndex(term,this.indexInstance.createIndex(mockFiles))).toBe('object')
+    });
+
+    it('should return accurate search result', function() {
+        const term = 'We are very unusual in alliance';
+        const resultObj = {
+            unusual:[1],
+            alliance:[1]
+        };
+        expect(this.indexInstance.searchIndex(term,this.indexInstance.createIndex(mockFiles))).toEqual(resultObj);
+    });
+
+});
