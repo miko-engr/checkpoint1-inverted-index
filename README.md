@@ -37,6 +37,10 @@ It can be used locally with the following steps
 
 - Start the application with ```npm start```
 
+### Limitations
+- Only files with ```.json``` extension can be indexed
+- Search is limited to one file at a time
+
 ## More information
 - [Inverted Index - Wikipedia] (https://en.wikipedia.org/wiki/Inverted_index)
 - [Inverted Index](https://www.elastic.co/guide/en/elasticsearch/guide/current/inverted-index.html)
