@@ -22,17 +22,24 @@ class Index {
             let merge = [];
             let keywords =[];
             let mySet;
-            for (let i=0; i < file.length; i++){
-                let clean = tokenize(file[i].text);
-                merge.push(clean.split(' '));
-                keywords = [].concat.apply([], merge);
-                mySet = new Set(keywords);
-                for (let key of mySet.keys()) {
-                    if (clean.includes(key)){
-                        if (!wordOccurrence.hasOwnProperty(key)){
-                            wordOccurrence[key] = [];
+            if (file.length < 0) {
+                
+                return false;
+            }
+            else {
+
+                for (let i=0; i < file.length; i++){
+                    let clean = tokenize(file[i].text);
+                    merge.push(clean.split(' '));
+                    keywords = [].concat.apply([], merge);
+                    mySet = new Set(keywords);
+                    for (let key of mySet.keys()) {
+                        if (clean.includes(key)){
+                            if (!wordOccurrence.hasOwnProperty(key)){
+                                wordOccurrence[key] = [];
+                            }
+                            wordOccurrence[key].push(i);
                         }
-                        wordOccurrence[key].push(i);
                     }
                 }
             }
