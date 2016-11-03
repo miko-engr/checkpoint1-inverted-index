@@ -29,14 +29,14 @@ gulp.task('watch', function () {
     gulp.watch('*.html', ['reload']);
 });
 
-gulp.task('browserify', () => {
+gulp.task('browserify', function() {
     return browserify('./jasmine/spec/inverted-index-spec.js')
     .bundle()
     .pipe(source('test-spec.js'))
     .pipe(gulp.dest('./jasmine/spec/browser'));
 });
 
-gulp.task('test', ['browserify'], () => {
+gulp.task('test', ['browserify'], function() {
     run ('node_modules/karma/bin/karma start karma.conf.js --single-run').exec();
 });
 gulp.task('default', ['browser-sync', 'browserify', 'watch']);
