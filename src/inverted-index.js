@@ -19,8 +19,8 @@ class Index {
      */
     createIndex(file) {
 
-        let wordOccurrence = {};
-        let merge = [];
+        const wordOccurrence = {};
+        const merge = [];
         let keywords =[];
         let uniqueWords;
         if (file.length === 0) {
@@ -56,8 +56,8 @@ class Index {
             return false;
         }
         else {
-            let token = tokenize(terms);
-            let words = token.split(' ');
+            const token = tokenize(terms);
+            const words = token.split(' ');
             for (let i = 0; i < words.length; i++) {
                 if (reff[words[i]] === undefined) {
                     let temp = words[i];
@@ -79,7 +79,7 @@ class Index {
  * @param tokens
  * @return newToken
  */
-let tokenize = (tokens) => {
+const tokenize = (tokens) => {
         var newToken = tokens.replace(/[^a-z0-9]+/gi, ' ').trim().toLowerCase();
         //send out the new token
         return newToken;
