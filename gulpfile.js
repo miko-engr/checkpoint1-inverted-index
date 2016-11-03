@@ -8,7 +8,7 @@ var browserSync = require('browser-sync').create(),
 
 
 
-gulp.task('browser-sync', function () {
+gulp.task('browser-sync', () => {
     browserSync.init({
         server: {
             baseDir: "./",
@@ -17,26 +17,26 @@ gulp.task('browser-sync', function () {
     });
 });
 
-gulp.task('reload', function (done) {
+gulp.task('reload', (done)=> {
     browserSync.reload();
     done();
 });
 
 
-gulp.task('watch', function () {
+gulp.task('watch', () => {
     gulp.watch('src/*.js', ['reload']);
     gulp.watch('css/*.css', ['reload']);
     gulp.watch('*.html', ['reload']);
 });
 
-gulp.task('browserify', function() {
+gulp.task('browserify', () =>{
     return browserify('./jasmine/spec/inverted-index-spec.js')
     .bundle()
     .pipe(source('test-spec.js'))
     .pipe(gulp.dest('./jasmine/spec/browser'));
 });
 
-gulp.task('test', ['browserify'], function() {
+gulp.task('test', ['browserify'], () =>{
     run ('node_modules/karma/bin/karma start karma.conf.js --single-run').exec();
 });
 gulp.task('default', ['browser-sync', 'browserify', 'watch']);
