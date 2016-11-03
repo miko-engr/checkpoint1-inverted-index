@@ -6,7 +6,6 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
         <script src="src/inverted-index.js"></script>
         <script src="src/pageCtrl.js"></script>
@@ -42,15 +41,15 @@
                     <span class="mdl-badge" data-badge="{{data}}" id="list">Document</span>
                 </div>
 
-                <button id="demo-menu-lower-left"
-                        class="mdl-button mdl-js-button mdl-button--icon">
-                <i class="material-icons">more_vert</i>
-                </button>
+               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select" style="width:90px; margin-right:50px;">
+                    <input class="mdl-textfield__input" value="Select File" type="text" id="createIndex" readonly tabIndex="-1" />
+                    <label class="mdl-textfield__label" for="country">Create Index</label>
+                    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="createIndex">
+                        <li ng-show="!documents.length">No file</li>
+                        <li ng-repeat ="(key, value) in documents" ng-click="index(key)">{{value.name}}</li>
+                    </ul>
+                </div>
 
-                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
-                    for="demo-menu-lower-left" id="name">
-                    <li ng-repeat ="(key, value) in documents" ng-click="index(key)">{{value.name}}</li>
-                </ul>
             </aside>
             <span style="color:red;">{{message}}</span>
                 <table class="mdl-data-table mdl-shadow--2dp half left" id="table" >
