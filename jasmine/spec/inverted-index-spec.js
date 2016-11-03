@@ -1,5 +1,7 @@
 'use strict';
 const book = require('../books');
+const empty = require('../emptyBook');
+const indexInstance = new Index();
 
 //write test to read book data
 describe("Read book data", () => {
@@ -21,38 +23,38 @@ describe("Read book data", () => {
 
 describe("Check Class properties", () => {
     
-    beforeEach(() => {
-        this.indexInstance = new Index();
-    });
-
     it("should have get index property", () => {
-        expect(typeof this.indexInstance.getIndex ==='function').toBeTruthy();
+        expect(typeof indexInstance.getIndex ==='function').toBeTruthy();
     });
 
     it("should have create index property", () => {
-        expect(typeof this.indexInstance.createIndex ==='function').toBeTruthy();
+        expect(typeof indexInstance.createIndex ==='function').toBeTruthy();
     });
     it("should have search property", () => {
-        expect(typeof this.indexInstance.searchIndex ==='function').toBeTruthy();
+        expect(typeof indexInstance.searchIndex ==='function').toBeTruthy();
     });
 });
 
 describe("Populate Index", () => {
-    beforeEach(() => {
-    this.indexInstance = new Index();
-  });
+
+    it('should return false when empty book is passed' , () => {
+        const emptyFile = {
+            name:'emptyBook.json',
+            docs:empty
+        };
+        expect(indexInstance.createIndex(empty)).toBeFalsy();
+    });
 
     it("should create an index of documents as an object", () => {
         let details = {
             name:'book.json',
             docs:book
         };
-        let indexArray = this.indexInstance;
+        let indexArray = indexInstance;
         expect(typeof indexArray.getIndex(details)).toBe('object');
     });
 
     it("should create index and return a valid result", () =>{
-        let creates = this.indexInstance;
         let result = {
             a:[0,1],
             alice:[0],
@@ -82,20 +84,16 @@ describe("Populate Index", () => {
             wizard:[1],
             world:[0]
         };
-        expect(creates.createIndex(book)).toEqual(result);
+        expect(indexInstance.createIndex(book)).toEqual(result);
     });
 
 });
 
 describe('Search Index', () => {
-    
-    beforeEach(() => {
-        this.indexInstance = new Index();
-    });
 
     it('should search and return an object that contains result', () => {
         const term = 'We are very unusual in alliance';
-        expect(typeof this.indexInstance.searchIndex(term,this.indexInstance.createIndex(book))).toBe('object');
+        expect(typeof indexInstance.searchIndex(term,indexInstance.createIndex(book))).toBe('object');
     });
 
     it('should return accurate search result', () => {
@@ -104,7 +102,12 @@ describe('Search Index', () => {
             unusual:[1],
             alliance:[1]
         };
-        expect(this.indexInstance.searchIndex(term,this.indexInstance.createIndex(book))).toEqual(searchResult);
+        expect(indexInstance.searchIndex(term,indexInstance.createIndex(book))).toEqual(searchResult);
+    });
+
+    it('should return false when term is not string', () =>{
+        const invalidTerm = 12;
+        expect(indexInstance.searchIndex(invalidTerm,indexInstance.createIndex(book))).toBeFalsy();
     });
 
 });
