@@ -18,32 +18,32 @@ class Index {
      * @return wordOccurrence
      */
     createIndex(file) {
-            let wordOccurrence = {};
-            let merge = [];
-            let keywords =[];
-            let mySet;
-            if (file.length < 0) {
-                
-                return false;
-            }
-            else {
 
-                for (let i=0; i < file.length; i++){
-                    let clean = tokenize(file[i].text);
-                    merge.push(clean.split(' '));
-                    keywords = [].concat.apply([], merge);
-                    mySet = new Set(keywords);
-                    for (let key of mySet.keys()) {
-                        if (clean.includes(key)){
-                            if (!wordOccurrence.hasOwnProperty(key)){
-                                wordOccurrence[key] = [];
-                            }
-                            wordOccurrence[key].push(i);
+        let wordOccurrence = {};
+        let merge = [];
+        let keywords =[];
+        let uniqueWords;
+        if (file.length < 0) {
+            return false;
+        }
+        else {
+            for (let i=0; i < file.length; i++){
+                let clean = tokenize(file[i].text);
+                merge.push(clean.split(' '));
+                keywords = [].concat.apply([], merge);
+                uniqueWords = new Set(keywords);
+                for (let key of uniqueWords.keys()) {
+                    if (clean.includes(key)){
+                        if (!wordOccurrence.hasOwnProperty(key)){
+                            wordOccurrence[key] = [];
                         }
+                        
+                        wordOccurrence[key].push(i);
                     }
                 }
             }
-            return wordOccurrence;
+        }
+        return wordOccurrence;
     }
     /**
      * Search Index Method that searches uploaded file with the aid of the created index
@@ -78,8 +78,8 @@ class Index {
  * @param tokens
  * @return newToken
  */
-    function tokenize(tokens) {
+let tokenize = (tokens) => {
         var newToken = tokens.replace(/[^a-z0-9]+/gi, ' ').trim().toLowerCase();
         //send out the new token
         return newToken;
-    }
+    };

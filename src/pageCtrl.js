@@ -1,10 +1,10 @@
 'use strict';
 let app = angular.module('app',[]);
-app.controller('pageController', function($scope) {
+app.controller('pageController', ($scope) => {
     let details = {};
     $scope.documents = [];
     let read = new Index();
-    $scope.fileUpload = function() {
+    $scope.fileUpload = () => {
         let fileDetails = document.getElementById('file').files[0];
         if(fileDetails===undefined || !fileDetails.name.toLowerCase().match(/\.json$/)){
             $scope.message = 'Invalid Selection';
@@ -13,7 +13,7 @@ app.controller('pageController', function($scope) {
             $scope.message = '';
             let fileObj = new FileReader();
             fileObj.readAsText(fileDetails);
-            fileObj.onload = function(file) {
+            fileObj.onload = (file) => {
                 if(isJson(file.target.result)){
                     let jsonFile = JSON.parse(file.target.result);
                     details = {
@@ -28,14 +28,14 @@ app.controller('pageController', function($scope) {
         }
         
     };
-    $scope.index = function(fileIndex) {
+    $scope.index = (fileIndex) => {
         $scope.docs = $scope.documents[fileIndex].docs;
         $scope.docArray = read.createIndex($scope.docs);
         console.log($scope.docArray);
         $scope.data = $scope.docs.length;
     };
-    $scope.search = function() {
-        let terms = document.getElementById('terms').value;
+    $scope.search = () => {
+        const terms = document.getElementById('terms').value;
         $scope.docArray = read.searchIndex(terms,$scope.docArray);
     };
     
@@ -44,7 +44,7 @@ app.controller('pageController', function($scope) {
 /**
  * Checks if contents of the file is in JSON format
  */
-function isJson(str) {
+let isJson = (str) => {
     try {
         JSON.parse(str);
     } catch (e) {
