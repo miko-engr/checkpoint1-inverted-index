@@ -51,4 +51,4 @@ let isJson = (str) => {
         return false;
     }
     return true;
-}
+};

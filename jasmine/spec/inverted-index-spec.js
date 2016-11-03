@@ -95,7 +95,7 @@ describe('Search Index', () => {
 
     it('should search and return an object that contains result', () => {
         const term = 'We are very unusual in alliance';
-        expect(typeof this.indexInstance.searchIndex(term,this.indexInstance.createIndex(book))).toBe('object')
+        expect(typeof this.indexInstance.searchIndex(term,this.indexInstance.createIndex(book))).toBe('object');
     });
 
     it('should return accurate search result', () => {
