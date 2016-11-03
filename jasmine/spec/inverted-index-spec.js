@@ -1,66 +1,57 @@
 'use strict';
-var mockFiles = [{
-            "title": "Alice of in Wonderland",
-            "text": "Alice falls into a rabbit shit hole and enters a world full of imagination."
-        },
-
-        {
-            "title": "The Lord of the zip Rings: The Fellowship of the Ring.",
-            "text": "An unusual alliance of man, elf, dwarf, oobit wizard and hobbit seek to destroy a powerful ring."
-        }
-];
+const book = require('../books');
 
 //write test to read book data
-describe("Read book data", function () {
-    it("should verify that the files are not empty", function () {
-        expect(mockFiles.length > 0).toBeTruthy();
+describe("Read book data", () => {
+    it("should verify that the files are not empty", () => {
+        expect(book.length > 0).toBeTruthy();
     });
 
-    it("should check if all properties in the file are strings", function () {
-        mockFiles.forEach(function (document) {
+    it("should check if all properties in the file are strings", () => {
+        book.forEach(function (document) {
             expect(typeof document.title === "string").toBeTruthy();
             expect(typeof document.text === "string").toBeTruthy();
         });
     });
 
-    it("should verify that the file content is a JSON array", function () {
-        expect(Array.isArray(mockFiles)).toBeTruthy();
+    it("should verify that the file content is a JSON array", () => {
+        expect(Array.isArray(book)).toBeTruthy();
     });
 });
 
-describe("Check Class properties", function () {
+describe("Check Class properties", () => {
     
-    beforeEach(function() {
+    beforeEach(() => {
         this.indexInstance = new Index();
     });
 
-    it("should have get index property", function () {
+    it("should have get index property", () => {
         expect(typeof this.indexInstance.getIndex ==='function').toBeTruthy();
     });
 
-    it("should have create index property", function () {
+    it("should have create index property", () => {
         expect(typeof this.indexInstance.createIndex ==='function').toBeTruthy();
     });
-    it("should have search property", function () {
+    it("should have search property", () => {
         expect(typeof this.indexInstance.searchIndex ==='function').toBeTruthy();
     });
 });
 
-describe("Populate Index", function () {
-    beforeEach(function() {
+describe("Populate Index", () => {
+    beforeEach(() => {
     this.indexInstance = new Index();
   });
 
-    it("should create an index of documents as an object", function () {
-        let data = {
+    it("should create an index of documents as an object", () => {
+        let details = {
             name:'book.json',
-            docs:mockFiles
+            docs:book
         };
         let indexArray = this.indexInstance;
-        expect(typeof indexArray.getIndex(data)).toBe('object');
+        expect(typeof indexArray.getIndex(details)).toBe('object');
     });
 
-    it("should create index and return a valid result", function(){
+    it("should create index and return a valid result", () =>{
         let creates = this.indexInstance;
         let result = {
             a:[0,1],
@@ -91,29 +82,29 @@ describe("Populate Index", function () {
             wizard:[1],
             world:[0]
         };
-        expect(creates.createIndex(mockFiles)).toEqual(result);
+        expect(creates.createIndex(book)).toEqual(result);
     });
 
 });
 
-describe('Search Index', function() {
+describe('Search Index', () => {
     
-    beforeEach(function() {
+    beforeEach(() => {
         this.indexInstance = new Index();
     });
 
-    it('should search and return an object that contains result', function() {
+    it('should search and return an object that contains result', () => {
         const term = 'We are very unusual in alliance';
-        expect(typeof this.indexInstance.searchIndex(term,this.indexInstance.createIndex(mockFiles))).toBe('object')
+        expect(typeof this.indexInstance.searchIndex(term,this.indexInstance.createIndex(book))).toBe('object')
     });
 
-    it('should return accurate search result', function() {
+    it('should return accurate search result', () => {
         const term = 'We are very unusual in alliance';
-        const resultObj = {
+        const searchResult = {
             unusual:[1],
             alliance:[1]
         };
-        expect(this.indexInstance.searchIndex(term,this.indexInstance.createIndex(mockFiles))).toEqual(resultObj);
+        expect(this.indexInstance.searchIndex(term,this.indexInstance.createIndex(book))).toEqual(searchResult);
     });
 
 });
