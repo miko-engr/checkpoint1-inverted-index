@@ -4,7 +4,8 @@
   "description": "An application that reads a json file and index them to make search possible on them",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "test": "gulp test"
   },
   "keywords": [
     "search",
@@ -14,6 +15,23 @@
   "author": "Atanda Abdulsemiu",
   "license": "ISC",
   "dependencies": {
-    "jshint": "^2.9.3"
+    "connect": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "serve-static": "^1.11.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.17.5",
+    "browserify": "^13.1.1",
+    "codeclimate-test-reporter": "^0.4.0",
+    "gulp-run": "^1.7.1",
+    "jasmine": "^2.5.2",
+    "jshint": "^2.9.3",
+    "karma": "^1.3.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-verbose-reporter": "0.0.3",
+    "vinyl-source-stream": "^1.1.0"
   }
 }

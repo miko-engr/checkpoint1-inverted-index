@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <title>Inverted Index</title>
+        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <script src="src/inverted-index.js"></script>
+        <script src="src/pageCtrl.js"></script>
+    </head>
+    <body ng-controller="pageController">
+        <!-- Always shows a header, even in smaller screens. -->
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">Inverted Index</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Title</span>
+            <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="file" id="file">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="fileUpload()" style="float:right">Upload File</button>
+                </div>
+            <aside id="load" style="float:right">
+                <div>
+                    <span class="mdl-badge" data-badge="{{data}}" id="list">Document</span>
+                </div>
+
+               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select" style="width:90px; margin-right:50px;">
+                    <input class="mdl-textfield__input" value="Select File" type="text" id="createIndex" readonly tabIndex="-1" />
+                    <label class="mdl-textfield__label" for="country">Create Index</label>
+                    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="createIndex">
+                        <li ng-show="!documents.length">No file</li>
+                        <li ng-repeat ="(key, value) in documents" ng-click="index(key)">{{value.name}}</li>
+                    </ul>
+                </div>
+
+            </aside>
+            <span style="color:red;">{{message}}</span>
+                <table class="mdl-data-table mdl-shadow--2dp half left" id="table" >
+                <thead>
+                    <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Words</th>
+                    <th ng-repeat="(index,value) in docs">{{'Document '+(index+1)}}</th>
+                    </tr>
+                    
+                </thead>
+                <tbody><tr ng-repeat ="(key,value) in docArray">
+                        <td>{{key}}</td>
+                        <td ng-repeat="(index,value) in docs">
+                        <span ng-if="docArray[key].includes(index)">X</span>
+                        </td>
+                    </tr></tbody>
+                </table>
+            </div>
+            <div id="result">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="terms">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="search()" id="search" style="float:right">Search</button>
+                </div>
+            </div>
+
+        </main>
+        
+        </div>
+        <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+        
+        
+    </body>
+</html>
