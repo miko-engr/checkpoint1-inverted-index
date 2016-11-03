@@ -50,8 +50,7 @@ describe("Populate Index", () => {
             name:'book.json',
             docs:book
         };
-        let indexArray = indexInstance;
-        expect(typeof indexArray.getIndex(details)).toBe('object');
+        expect(typeof indexInstance.getIndex(details)).toBe('object');
     });
 
     it("should create index and return a valid result", () =>{

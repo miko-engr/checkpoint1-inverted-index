@@ -60,7 +60,8 @@ class Index {
             let words = token.split(' ');
             for (let i = 0; i < words.length; i++) {
                 if (reff[words[i]] === undefined) {
-                    console.log(words[i] + ' : ' + 'Not Found!!!!');
+                    let temp = words[i];
+                    console.log(`${temp} : Not Found`);
                 }
                 else {
                     let key = words[i];
