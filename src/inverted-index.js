@@ -23,7 +23,7 @@ class Index {
         let merge = [];
         let keywords =[];
         let uniqueWords;
-        if (file.length < 0) {
+        if (file.length === 0) {
             return false;
         }
         else {
@@ -51,12 +51,12 @@ class Index {
      * @return result
      */
     searchIndex(terms,reff) {
-        let token = tokenize(terms);
         let result = {};
         if (typeof terms !== 'string' || terms === '' || (terms.trim()) === '') {
-            console.log('We didn\'t forget to check though!!!');
+            return false;
         }
         else {
+            let token = tokenize(terms);
             let words = token.split(' ');
             for (let i = 0; i < words.length; i++) {
                 if (reff[words[i]] === undefined) {
