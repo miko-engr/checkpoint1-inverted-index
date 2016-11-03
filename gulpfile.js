@@ -3,7 +3,8 @@ var gulp = require('gulp'),
     connect = require("gulp-connect");
 var browserSync = require('browser-sync').create(),
     browserify = require('browserify'),
-    source = require('vinyl-source-stream');
+    source = require('vinyl-source-stream'),
+    run = require('gulp-run');
 
 
 
@@ -35,4 +36,7 @@ gulp.task('browserify', () => {
     .pipe(gulp.dest('./jasmine/spec/browser'));
 });
 
+gulp.task('test', ['browserify'], () => {
+    run ('node_modules/karma/bin/karma start karma.conf.js --single-run').exec();
+});
 gulp.task('default', ['browser-sync', 'browserify', 'watch']);
