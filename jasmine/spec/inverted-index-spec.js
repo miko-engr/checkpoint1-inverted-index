@@ -11,6 +11,7 @@ describe("Read book data", () => {
   });
 
   it("should check if all properties in the file are strings", () => {
+    
     book.forEach(function (document) {
       expect(typeof document.title === "string").toBeTruthy();
       expect(typeof document.text === "string").toBeTruthy();
@@ -100,6 +101,7 @@ describe('Search Index', () => {
 
   it('should search and return an object that contains result', () => {
     const term = 'We are very unusual in alliance';
+
     expect(typeof indexInstance.searchIndex(term, indexInstance
      .createIndex(book))).toBe('object');
   });
