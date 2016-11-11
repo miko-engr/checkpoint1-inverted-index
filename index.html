@@ -37,7 +37,11 @@
             <tr ng-repeat="(key,value) in docArray">
               <td>{{key}}</td>
               <td ng-repeat="(index,value) in docs">
-                <span ng-if="docArray[key].includes(index)">X</span>
+                <span ng-if="docArray[key].includes(index)" style="font-weight:bold;">X</span>
+                <span ng-if="!docArray[key].includes(index) && status" style="color:red; font-weight:bold; 
+                 font-size:10px;">
+                 Not Found
+                </span>
               </td>
             </tr>
           </tbody>
@@ -55,7 +59,7 @@
           <hr />
         <div id="result">
           <p style=" width: 350px;margin-left: -50px;margin-top: 50px">
-            Select File to Index and/or search
+            Select File to Index and/or search below
             </p>
           <div>
             <br />
