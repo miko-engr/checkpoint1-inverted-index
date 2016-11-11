@@ -1,33 +1,70 @@
-#load{
-    position:relative;
-    top:0.7em;
+.other {
+    float: right;
+    position: relative;
+    right: 60px;
 }
-tr th{
+
+#load {
+    position:relative;
+    margin-left: 80%;
+    top:-50%;
+}
+
+tr th {
     text-align: center;
 }
-input{
+
+input {
     position: relative;
     left:1.0em;
 }
-#search{
-    position:relative;
-    top:1.0em;
+
+#upload {
+    margin-right: 50px;
 }
-.left{
+
+#search {
+    position:relative;
+    top: 1.88em;
+    left: -205px;
+    z-index: 999;
+}
+
+.left {
     width:50%;
     float:left;
     position: relative;
     top:5.0em;
 }
 
-#result{
+#result {
     position: relative;
-    top:4.0em;
+    top:2.0em;
+    left:10px;
+    width:200px;
+    margin-top: -60px;
+    margin-left: 83px;
 }
-#text{
+
+#text {
     z-index: 999;
     position: absolute;
     float: right;
     right:5.0em;
     top:4.0em;
+}
+
+#table {
+    position: relative;
+    top:20px;
+    margin-left: 60px;
+}
+
+.error {
+    margin-left: 70%;
+    margin-top: -2%;
+}
+
+.search {
+    margin-top: -20px !important;
 }
