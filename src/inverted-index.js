@@ -20,21 +20,22 @@ class Index {
    * @return wordOccurrence
    */
   createIndex(file) {
-
     const wordOccurrence = {};
     const merge = [];
     let keywords = [];
     let uniqueWords;
+
     if (file.length === 0) {
       return false;
     }
     else {
-      
+
       for (let i = 0; i < file.length; i++) {
         let clean = tokenize(file[i].text);
         merge.push(clean.split(' '));
         keywords = [].concat.apply([], merge);
         uniqueWords = new Set(keywords);
+        
         for (let key of uniqueWords.keys()) {
           if (clean.includes(key)) {
             if (!wordOccurrence.hasOwnProperty(key)) {
