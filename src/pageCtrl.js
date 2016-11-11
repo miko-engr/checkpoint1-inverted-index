@@ -54,12 +54,13 @@ app.controller('pageController', ($scope) => {
     }
 
     $scope.msg = '';
+    $scope.searchStatus = false;
   };
 
   $scope.search = () => {
     const terms = document.getElementById('terms').value;
     $scope.docArray = read.searchIndex(terms, $scope.docArray);
-    $scope.status = true;
+    $scope.searchStatus = true;
   };
 
 });

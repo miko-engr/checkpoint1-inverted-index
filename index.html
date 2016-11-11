@@ -38,7 +38,7 @@
               <td>{{key}}</td>
               <td ng-repeat="(index,value) in docs">
                 <span ng-if="docArray[key].includes(index)" style="font-weight:bold;">X</span>
-                <span ng-if="!docArray[key].includes(index) && status" style="color:red; font-weight:bold; 
+                <span ng-if="!docArray[key].includes(index) && searchStatus" style="color:red; font-weight:bold; 
                  font-size:10px;">
                  Not Found
                 </span>
