@@ -100,7 +100,8 @@ describe('Search Index', () => {
 
   it('should search and return an object that contains result', () => {
     const term = 'We are very unusual in alliance';
-    expect(typeof indexInstance.searchIndex(term, indexInstance.createIndex(book))).toBe('object');
+    expect(typeof indexInstance.searchIndex(term, indexInstance
+     .createIndex(book))).toBe('object');
   });
 
   it('should return accurate search result', () => {
@@ -113,13 +114,16 @@ describe('Search Index', () => {
       in: 'Not Found',
       alliance: [1]
     };
-    
-    expect(indexInstance.searchIndex(term, indexInstance.createIndex(book))).toEqual(searchResult);
+
+    expect(indexInstance.searchIndex(term, indexInstance
+     .createIndex(book))).toEqual(searchResult);
   });
 
   it('should return false when term is not string', () => {
     const invalidTerm = 12;
-    expect(indexInstance.searchIndex(invalidTerm, indexInstance.createIndex(book))).toBeFalsy();
+
+    expect(indexInstance.searchIndex(invalidTerm, indexInstance
+     .createIndex(book))).toBeFalsy();
   });
 
 });
