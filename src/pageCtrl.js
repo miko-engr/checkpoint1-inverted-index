@@ -48,7 +48,6 @@ app.controller('pageController', ($scope) => {
     const terms = document.getElementById('terms').value;
     $scope.docArray = read.searchIndex(terms, $scope.docArray);
     $scope.status = true;
-    console.log($scope.docArray);
   };
 
 });
