@@ -53,7 +53,8 @@
           <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="fileUpload()" style="float:right">Upload File</button>
         </div>
         <div class="error">
-          <span style="color:red; margin-left: -110px;">{{message}}</span>
+          <span style="color:red; margin-left: -110px; font-weight:bold;">{{message}}</span>
+          <span style="color:green; margin-left: -110px; font-weight:bold;">{{msg}}</span>
         </div>
         <br />
           <hr />
@@ -66,7 +67,7 @@
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select" style="width:110px; margin-right:100px; margin-top: -30px; margin-left: -50px;">
               <input class="mdl-textfield__input" value="Select File" type="text" id="createIndex" readonly tabIndex="-1" style="margin-left:25px;"/>
               <label class="mdl-textfield__label" for="country" style="margin-left:40px;">Create Index</label>
-              <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="createIndex">
+              <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="createIndex" style="z-index:999999;">
                 <li ng-show="!documents.length">No file</li>
                 <li ng-repeat="(key, value) in documents" ng-click="index(key)" ng-if="value.name">{{value.name}}</li>
               </ul>

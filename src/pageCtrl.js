@@ -4,11 +4,12 @@ app.controller('pageController', ($scope) => {
   let details = {};
   $scope.documents = $scope.fileNames = [];
   const read = new Index();
-  
+
   $scope.fileUpload = () => {
     const fileDetails = document.getElementById('file').files[0];
     const check = fileDetails.name.toLowerCase().match(/\.json$/);
     if (fileDetails === undefined || !check) {
+      $scope.msg = '';
       $scope.message = 'Invalid Selection';
     }
 
@@ -24,7 +25,7 @@ app.controller('pageController', ($scope) => {
             docs: jsonFile
           };
 
-          if(!$scope.fileNames.includes(details.name)){
+          if (!$scope.fileNames.includes(details.name)) {
             $scope.documents.push(details);
             $scope.fileNames.push(details.name);
           }
@@ -35,13 +36,24 @@ app.controller('pageController', ($scope) => {
       };
 
       $scope.name = fileDetails.name;
+      $scope.msg = 'Upload Successful';
     }
 
   };
 
   $scope.index = (fileIndex) => {
     $scope.docs = $scope.documents[fileIndex].docs;
-    $scope.docArray = read.createIndex($scope.docs);
+    if ($scope.docs.length < 1) {
+      $scope.docArray = [];
+      $scope.message = 'Your File is empty';
+    }
+
+    else {
+      $scope.message = '';
+      $scope.docArray = read.createIndex($scope.docs);
+    }
+
+    $scope.msg = '';
   };
 
   $scope.search = () => {
