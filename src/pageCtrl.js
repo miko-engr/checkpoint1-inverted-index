@@ -16,7 +16,6 @@ app.controller('pageController', ($scope) => {
   let details = {};
   $scope.documents = $scope.fileNames = [];
   const read = new Index();
-
   $scope.fileUpload = () => {
     const fileDetails = document.getElementById('file').files[0];
     const check = fileDetails.name.toLowerCase().match(/\.json$/);

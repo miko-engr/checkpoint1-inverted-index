@@ -19,13 +19,13 @@ class Index {
    */
   getIndex(data) {
     let fileIndex = {};
-
-    for (let i = 0; i < data.docs.length; i++) {
-
-      fileIndex[data.name] = [i];
+    for (let count = 0; count < data.docs.length; count++) {
+      fileIndex[data.name] = [count];
     }
+
     return fileIndex;
   }
+
   /**
    * Create Index method that indexes text content of uploaded file
    * @param file
@@ -36,18 +36,16 @@ class Index {
     const merge = [];
     let keywords = [];
     let uniqueWords;
-
     if (file.length === 0) {
       return false;
     }
-    else {
 
-      for (let i = 0; i < file.length; i++) {
-        let clean = tokenize(file[i].text);
+    else {
+      for (let count = 0; count < file.length; count++) {
+        let clean = tokenize(file[count].text);
         merge.push(clean.split(' '));
         keywords = [].concat.apply([], merge);
-        uniqueWords = new Set(keywords);
-        
+        uniqueWords = new Set(keywords);      
         for (let key of uniqueWords.keys()) {
           if (clean.includes(key)) {
             if (!wordOccurrence.hasOwnProperty(key)) {
@@ -55,13 +53,18 @@ class Index {
               wordOccurrence[key] = [];
             }
 
-            wordOccurrence[key].push(i);
+            wordOccurrence[key].push(count);
           }
+
         }
+
       }
+
     }
+
     return wordOccurrence;
   }
+
   /**
    * Search Index Method that searches uploaded file with 
    * the aid of the created index
@@ -70,27 +73,29 @@ class Index {
    */
   searchIndex(terms, occurrence) {
     let result = {};
-
     if (typeof terms !== 'string' || terms === '' || (terms.trim()) === '') {
       return false;
     }
+
     else {
       const token = tokenize(terms);
       const words = token.split(' ');
+      for (let count = 0; count < words.length; count++) {
+        if (occurrence[words[count]] === undefined) {
 
-      for (let i = 0; i < words.length; i++) {
-
-        if (occurrence[words[i]] === undefined) {
-
-          result[words[i]] = 'Not Found';
+          result[words[count]] = 'Not Found';
         }
+
         else {
-          const key = words[i];
-          const value = occurrence[words[i]];
+          const key = words[count];
+          const value = occurrence[words[count]];
           result[key] = value;
         }
+
       }
+      
     }
+
     return result;
   }
 
