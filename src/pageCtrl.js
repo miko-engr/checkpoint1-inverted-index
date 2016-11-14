@@ -1,4 +1,16 @@
 'use strict';
+/**
+ * Checks if contents of the file is in JSON format
+ */
+const isJson = (str) => {
+  try {
+    JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
+  return true;
+};
+
 let app = angular.module('app', []);
 app.controller('pageController', ($scope) => {
   let details = {};
@@ -65,14 +77,3 @@ app.controller('pageController', ($scope) => {
 
 });
 
-/**
- * Checks if contents of the file is in JSON format
- */
-const isJson = (str) => {
-  try {
-    JSON.parse(str);
-  } catch (e) {
-    return false;
-  }
-  return true;
-};

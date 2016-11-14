@@ -1,4 +1,16 @@
 'use strict';
+/**
+ * Function that regularizes input
+ * @param tokens
+ * @return newToken
+ */
+const tokenize = (tokens) => {
+  const newToken = tokens.replace(/[^a-z0-9]+/gi, ' ')
+    .trim().toLowerCase();
+  //send out the new token
+  return newToken;
+};
+
 class Index {
   /**
    * Get Index method that indexes JSON file
@@ -51,7 +63,8 @@ class Index {
     return wordOccurrence;
   }
   /**
-   * Search Index Method that searches uploaded file with the aid of the created index
+   * Search Index Method that searches uploaded file with 
+   * the aid of the created index
    * @param terms(words to be searched), occurrence
    * @return result
    */
@@ -82,14 +95,3 @@ class Index {
   }
 
 }
-/**
- * Function that regularizes input
- * @param tokens
- * @return newToken
- */
-const tokenize = (tokens) => {
-  const newToken = tokens.replace(/[^a-z0-9]+/gi, ' ')
-    .trim().toLowerCase();
-  //send out the new token
-  return newToken;
-};

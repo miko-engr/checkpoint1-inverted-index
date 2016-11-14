@@ -4,55 +4,51 @@ const empty = require('../emptyBook');
 const indexInstance = new Index();
 
 //write test to read book data
-describe("Read book data", () => {
+describe('Read book data', () => {
   
-  it("should verify that the files are not empty", () => {
+  it('should verify that the files are not empty', () => {
     expect(book.length > 0).toBeTruthy();
   });
 
-  it("should check if all properties in the file are strings", () => {
+  it('should check if all properties in the file are strings', () => {
     
     book.forEach(function (document) {
-      expect(typeof document.title === "string").toBeTruthy();
-      expect(typeof document.text === "string").toBeTruthy();
+      expect(typeof document.title === 'string').toBeTruthy();
+      expect(typeof document.text === 'string').toBeTruthy();
     });
 
   });
 
-  it("should verify that the file content is a JSON array", () => {
+  it('should verify that the file content is a JSON array', () => {
     expect(Array.isArray(book)).toBeTruthy();
   });
 
 });
 
-describe("Check Class properties", () => {
+describe('Check Class properties', () => {
 
-  it("should have get index property", () => {
+  it('should have get index property', () => {
     expect(typeof indexInstance.getIndex === 'function').toBeTruthy();
   });
 
-  it("should have create index property", () => {
+  it('should have create index property', () => {
     expect(typeof indexInstance.createIndex === 'function').toBeTruthy();
   });
 
-  it("should have search property", () => {
+  it('should have search property', () => {
     expect(typeof indexInstance.searchIndex === 'function').toBeTruthy();
   });
 
 });
 
-describe("Populate Index", () => {
+describe('Populate Index', () => {
 
   it('should return false when empty book is passed', () => {
-    const emptyFile = {
-      name: 'emptyBook.json',
-      docs: empty
-    };
 
     expect(indexInstance.createIndex(empty)).toBeFalsy();
   });
 
-  it("should create an index of documents as an object", () => {
+  it('should create an index of documents as an object', () => {
     const details = {
       name: 'book.json',
       docs: book
@@ -61,7 +57,7 @@ describe("Populate Index", () => {
     expect(typeof indexInstance.getIndex(details)).toBe('object');
   });
 
-  it("should create index and return a valid result", () => {
+  it('should create index and return a valid result', () => {
     const result = {
       a: [0, 1],
       alice: [0],
