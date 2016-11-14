@@ -2,12 +2,15 @@
 /**
  * Checks if contents of the file is in JSON format
  */
-const isJson = (str) => {
+const isJson = (term) => {
   try {
-    JSON.parse(str);
-  } catch (e) {
+    JSON.parse(term);
+  }
+
+  catch (e) {
     return false;
   }
+
   return true;
 };
 
