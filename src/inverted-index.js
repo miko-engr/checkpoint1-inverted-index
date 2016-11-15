@@ -45,7 +45,7 @@ class Index {
         let clean = tokenize(file[count].text);
         merge.push(clean.split(' '));
         keywords = [].concat.apply([], merge);
-        uniqueWords = new Set(keywords);      
+        uniqueWords = new Set(keywords);
         for (let key of uniqueWords.keys()) {
           if (clean.includes(key)) {
             if (!wordOccurrence.hasOwnProperty(key)) {
@@ -93,7 +93,7 @@ class Index {
         }
 
       }
-      
+
     }
 
     return result;

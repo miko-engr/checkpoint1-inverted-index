@@ -33,15 +33,19 @@
   "maxlen": 80,
   "newcap": true,
   "quotmark": "single",
-  "unused": true,
+  "unused": false,
   "eqnull": true,
   "globals": {
     "console": true,
+    "before": false,
     "alert": true,
     "document": true,
     "FileReader": true,
     "app": true,
     "angular": true,
-    "Index": true
+    "Index": true,
+    "beforeEach": false,
+    "after": false,
+    "afterEach": false
   }
 }
