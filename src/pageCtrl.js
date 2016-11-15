@@ -36,14 +36,13 @@ app.controller('pageController', ($scope) => {
           const jsonFile = JSON.parse(file.target.result);
           details = {
             name: fileDetails.name,
-            docs: jsonFile
+            docs: jsonFile,
           };
 
           if (!$scope.fileNames.includes(details.name)) {
             $scope.documents.push(details);
             $scope.fileNames.push(details.name);
           }
-
         }
 
         $scope.$apply();
@@ -52,19 +51,18 @@ app.controller('pageController', ($scope) => {
       $scope.name = fileDetails.name;
       $scope.msg = 'Upload Successful';
     }
-
   };
 
   $scope.index = (fileIndex) => {
     $scope.docs = $scope.documents[fileIndex].docs;
-    if ($scope.docs.length < 1) {
-      $scope.docArray = [];
-      $scope.message = 'Your File is empty';
+    if ($scope.docs.length) {
+      $scope.message = '';
+      $scope.docArray = read.createIndex($scope.docs);
     }
 
     else {
-      $scope.message = '';
-      $scope.docArray = read.createIndex($scope.docs);
+      $scope.docArray = [];
+      $scope.message = 'Your File is empty';
     }
 
     $scope.msg = '';

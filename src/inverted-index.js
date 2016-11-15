@@ -55,11 +55,8 @@ class Index {
 
             wordOccurrence[key].push(count);
           }
-
         }
-
       }
-
     }
 
     return wordOccurrence;
@@ -91,12 +88,9 @@ class Index {
           const value = occurrence[words[count]];
           result[key] = value;
         }
-
       }
-
     }
 
     return result;
   }
-
 }
