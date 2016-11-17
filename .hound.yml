@@ -2,6 +2,7 @@ eslint:
   enabled: true
 eslint:
   config_file: .eslintrc
+  ignore_file: .eslintignore
 
 esversion:
   6
