@@ -5,28 +5,23 @@ const indexInstance = new Index();
 
 //write test to read book data
 describe('Read book data', () => {
-  
   it('should verify that the files are not empty', () => {
     expect(book.length > 0).toBeTruthy();
   });
 
   it('should check if all properties in the file are strings', () => {
-    
     book.forEach(function (document) {
       expect(typeof document.title === 'string').toBeTruthy();
       expect(typeof document.text === 'string').toBeTruthy();
     });
-
   });
 
   it('should verify that the file content is a JSON array', () => {
     expect(Array.isArray(book)).toBeTruthy();
   });
-
 });
 
 describe('Check Class properties', () => {
-
   it('should have get index property', () => {
     expect(typeof indexInstance.getIndex === 'function').toBeTruthy();
   });
@@ -42,7 +37,6 @@ describe('Check Class properties', () => {
 });
 
 describe('Populate Index', () => {
-
   it('should return false when empty book is passed', () => {
 
     expect(indexInstance.createIndex(empty)).toBeFalsy();
@@ -53,7 +47,6 @@ describe('Populate Index', () => {
       name: 'book.json',
       docs: book
     };
-
     expect(typeof indexInstance.getIndex(details)).toBe('object');
   });
 
@@ -87,17 +80,13 @@ describe('Populate Index', () => {
       wizard: [1],
       world: [0]
     };
-
     expect(indexInstance.createIndex(book)).toEqual(result);
   });
-
 });
 
 describe('Search Index', () => {
-
   it('should search and return an object that contains result', () => {
     const term = 'We are very unusual in alliance';
-
     expect(typeof indexInstance.searchIndex(term, indexInstance
      .createIndex(book))).toBe('object');
   });
@@ -112,7 +101,6 @@ describe('Search Index', () => {
       in: 'Not Found',
       alliance: [1]
     };
-
     expect(indexInstance.searchIndex(term, indexInstance
      .createIndex(book))).toEqual(searchResult);
   });
@@ -123,5 +111,4 @@ describe('Search Index', () => {
     expect(indexInstance.searchIndex(invalidTerm, indexInstance
      .createIndex(book))).toBeFalsy();
   });
-
 });
