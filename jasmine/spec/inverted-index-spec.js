@@ -107,7 +107,6 @@ describe('Search Index', () => {
 
   it('should return false when term is not string', () => {
     const invalidTerm = 12;
-
     expect(indexInstance.searchIndex(invalidTerm, indexInstance
      .createIndex(book))).toBeFalsy();
   });
