@@ -1,4 +1,7 @@
-jshint:
+eslint:
   enabled: true
-jshint:
-  config_file: .jshintrc
+eslint:
+  config_file: .eslintrc
+
+esversion:
+  6
