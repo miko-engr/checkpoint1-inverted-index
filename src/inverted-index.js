@@ -1,25 +1,27 @@
-'use strict';
 /**
  * Function that regularizes input
- * @param tokens
- * @return newToken
+ * @param {String} tokens
+ * @return {Array} newToken
  */
 const tokenize = (tokens) => {
   const newToken = tokens.replace(/[^a-z0-9]+/gi, ' ')
     .trim().toLowerCase();
-  //send out the new token
+  // send out the new token
   return newToken;
 };
 
+/**
+ * Inverted Index Class declaration
+ */
 class Index {
   /**
    * Get Index method that indexes JSON file
-   * @param data (key,value pair)
-   * @return fileIndex
+   * @param {Object} data
+   * @return {Array} fileIndex
    */
   getIndex(data) {
-    let fileIndex = {};
-    for (let count = 0; count < data.docs.length; count++) {
+    const fileIndex = {};
+    for (let count = 0; count < data.docs.length; count += 1) {
       fileIndex[data.name] = [count];
     }
 
@@ -28,8 +30,8 @@ class Index {
 
   /**
    * Create Index method that indexes text content of uploaded file
-   * @param file
-   * @return wordOccurrence
+   * @param {Array} file
+   * @return {Object} wordOccurrence
    */
   createIndex(file) {
     const wordOccurrence = {};
@@ -39,55 +41,46 @@ class Index {
     if (file.length === 0) {
       return false;
     }
-
-    else {
-      for (let count = 0; count < file.length; count++) {
-        let clean = tokenize(file[count].text);
-        merge.push(clean.split(' '));
-        keywords = [].concat.apply([], merge);
-        uniqueWords = new Set(keywords);
-        for (let key of uniqueWords.keys()) {
-          if (clean.includes(key)) {
-            if (!wordOccurrence.hasOwnProperty(key)) {
-
-              wordOccurrence[key] = [];
-            }
-
-            wordOccurrence[key].push(count);
+    for (let count = 0; count < file.length; count += 1) {
+      const clean = tokenize(file[count].text);
+      merge.push(clean.split(' '));
+      keywords = [].concat(...merge);
+      uniqueWords = new Set(keywords);
+      uniqueWords.forEach((key) => {
+        if (clean.includes(key)) {
+          if (!{}.hasOwnProperty.call(wordOccurrence, key)) {
+            wordOccurrence[key] = [];
           }
+
+          wordOccurrence[key].push(count);
         }
-      }
+      });
     }
 
     return wordOccurrence;
   }
 
   /**
-   * Search Index Method that searches uploaded file with 
+   * Search Index Method that searches uploaded file with
    * the aid of the created index
-   * @param terms(words to be searched), occurrence
-   * @return result
+   * @param {String} terms
+   * @param {Array} occurrence
+   * @return {Object} result
    */
   searchIndex(terms, occurrence) {
-    let result = {};
+    const result = {};
     if (typeof terms !== 'string' || terms === '' || (terms.trim()) === '') {
       return false;
     }
-
-    else {
-      const token = tokenize(terms);
-      const words = token.split(' ');
-      for (let count = 0; count < words.length; count++) {
-        if (occurrence[words[count]] === undefined) {
-
-          result[words[count]] = 'Not Found';
-        }
-
-        else {
-          const key = words[count];
-          const value = occurrence[words[count]];
-          result[key] = value;
-        }
+    const token = tokenize(terms);
+    const words = token.split(' ');
+    for (let count = 0; count < words.length; count += 1) {
+      if (occurrence[words[count]] === undefined) {
+        result[words[count]] = 'Not Found';
+      } else {
+        const key = words[count];
+        const value = occurrence[words[count]];
+        result[key] = value;
       }
     }
 
