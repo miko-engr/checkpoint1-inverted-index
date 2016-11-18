@@ -8,10 +8,8 @@ class Index {
    * @return {Array} newToken
    */
   static tokenize(tokens) {
-    const newToken = tokens.replace(/[^a-z0-9]+/gi, ' ')
+    return tokens.replace(/[^a-z0-9]+/gi, ' ')
       .trim().toLowerCase();
-    // send out the new token
-    return newToken;
   }
   /**
    * Get Index method that indexes JSON file

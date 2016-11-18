@@ -10,7 +10,6 @@ function isJson(term) {
   catch (e) {
     return false;
   }
-
   return true;
 }
 
@@ -76,4 +75,3 @@ app.controller('pageController', ($scope) => {
   };
 
 });
-
