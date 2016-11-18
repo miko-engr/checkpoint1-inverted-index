@@ -2,7 +2,7 @@
 /**
  * Checks if contents of the file is in JSON format
  */
-const isJson = (term) => {
+function isJson(term) {
   try {
     JSON.parse(term);
   }
@@ -12,7 +12,8 @@ const isJson = (term) => {
   }
 
   return true;
-};
+
+}
 
 let app = angular.module('app', []);
 app.controller('pageController', ($scope) => {

@@ -1,19 +1,18 @@
 /**
- * Function that regularizes input
- * @param {String} tokens
- * @return {Array} newToken
- */
-const tokenize = (tokens) => {
-  const newToken = tokens.replace(/[^a-z0-9]+/gi, ' ')
-    .trim().toLowerCase();
-  // send out the new token
-  return newToken;
-};
-
-/**
  * Inverted Index Class declaration
  */
 class Index {
+  /**
+   * Function that regularizes input
+   * @param {String} tokens
+   * @return {Array} newToken
+   */
+  static tokenize(tokens) {
+    const newToken = tokens.replace(/[^a-z0-9]+/gi, ' ')
+      .trim().toLowerCase();
+    // send out the new token
+    return newToken;
+  }
   /**
    * Get Index method that indexes JSON file
    * @param {Object} data
@@ -42,7 +41,7 @@ class Index {
       return false;
     }
     for (let count = 0; count < file.length; count += 1) {
-      const clean = tokenize(file[count].text);
+      const clean = Index.tokenize(file[count].text);
       merge.push(clean.split(' '));
       keywords = [].concat(...merge);
       uniqueWords = new Set(keywords);
@@ -72,15 +71,14 @@ class Index {
     if (typeof terms !== 'string' || terms === '' || (terms.trim()) === '') {
       return false;
     }
-    const token = tokenize(terms);
+    const token = Index.tokenize(terms);
     const words = token.split(' ');
     for (let count = 0; count < words.length; count += 1) {
       if (occurrence[words[count]] === undefined) {
         result[words[count]] = 'Not Found';
       } else {
         const key = words[count];
-        const value = occurrence[words[count]];
-        result[key] = value;
+        result[key] = occurrence[words[count]];
       }
     }
 

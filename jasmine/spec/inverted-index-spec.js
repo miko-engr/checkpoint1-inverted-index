@@ -38,7 +38,6 @@ describe('Check Class properties', () => {
 
 describe('Populate Index', () => {
   it('should return false when empty book is passed', () => {
-
     expect(indexInstance.createIndex(empty)).toBeFalsy();
   });
 
@@ -88,13 +87,13 @@ describe('Search Index', () => {
   it('should search and return an object that contains result', () => {
     const term = 'We are very unusual in alliance';
     expect(typeof indexInstance.searchIndex(term, indexInstance
-     .createIndex(book))).toBe('object');
+      .createIndex(book))).toBe('object');
   });
 
   it('should return accurate search result', () => {
     const term = 'We are very unusual in alliance';
     const searchResult = {
-      we:'Not Found',
+      we: 'Not Found',
       are: 'Not Found',
       very: 'Not Found',
       unusual: [1],
@@ -102,12 +101,24 @@ describe('Search Index', () => {
       alliance: [1]
     };
     expect(indexInstance.searchIndex(term, indexInstance
-     .createIndex(book))).toEqual(searchResult);
+      .createIndex(book))).toEqual(searchResult);
   });
 
   it('should return false when term is not string', () => {
     const invalidTerm = 12;
     expect(indexInstance.searchIndex(invalidTerm, indexInstance
-     .createIndex(book))).toBeFalsy();
+      .createIndex(book))).toBeFalsy();
+  });
+});
+
+describe('Static class method that regularizes string', () => {
+  const mixMatch = 'Alice, spoke to the elf.'
+  const filtered = 'alice spoke to the elf'
+  it('should return a typeof string', () => {
+    expect(typeof Index.tokenize(mixMatch)).toBe('string');
+  });
+
+  it('should return regularized string', () => {
+    expect(Index.tokenize(mixMatch)).toEqual(filtered);
   });
 });
