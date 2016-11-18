@@ -12,7 +12,6 @@ function isJson(term) {
   }
 
   return true;
-
 }
 
 let app = angular.module('app', []);

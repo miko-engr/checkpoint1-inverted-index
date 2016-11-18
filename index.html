@@ -25,7 +25,16 @@
     </header>
     <main class="mdl-layout__content">
       <div class="main-content">
-        <table class="mdl-data-table mdl-shadow--2dp half left" id="table">
+        <div style="margin-left:10px; width:40%;" ng-if="!documents.length">
+          <h5 style="text-align:center;">How to use this app</h5>
+          <ul style ="margin-top:-10px; line-height:16px;">
+            <li>Select and upload a file with .json file extension</li>
+            <li>After successful upload, Create an index of the file by clicking <i>Select File</i></li>
+            <li>Index your file of choosing from the dropdown</li>
+            <li>You can search for keywords in your indexed file in the search input</li>
+          </ul>
+        </div>
+        <table class="mdl-data-table mdl-shadow--2dp half left" id="table" ng-if="documents.length">
           <thead>
             <tr>
               <th class="mdl-data-table__cell--non-numeric">Words</th>
@@ -68,7 +77,7 @@
               <input class="mdl-textfield__input" value="Select File" type="text" id="createIndex" readonly tabIndex="-1" style="margin-left:25px;"/>
               <label class="mdl-textfield__label" for="country" style="margin-left:40px;">Create Index</label>
               <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="createIndex" style="z-index:999999;">
-                <li ng-show="!documents.length">No file</li>
+                <li ng-if="!documents.length">No file</li>
                 <li ng-repeat="(key, value) in documents" ng-click="index(key)" ng-if="value.name">{{value.name}}</li>
               </ul>
             </div>
@@ -76,7 +85,7 @@
             <br />
             <div class="mdl-textfield mdl-js-textfield search">
               <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="search()" id="search" style="float:right">Search</button>
-              <input class="mdl-textfield__input" type="text" id="terms" style="margin-left: -20px;width: 280px;">
+              <input class="mdl-textfield__input" type="text" placeholder="Search Here" id="terms" style="margin-left: -20px;width: 280px;">
             </div>
           </div>
         </div>
