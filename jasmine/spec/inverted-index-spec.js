@@ -112,8 +112,8 @@ describe('Search Index', () => {
 });
 
 describe('Static class method that regularizes string', () => {
-  const mixMatch = 'Alice, spoke to the elf.'
-  const filtered = 'alice spoke to the elf'
+  const mixMatch = 'Alice, spoke to the elf.';
+  const filtered = 'alice spoke to the elf';
   it('should return a typeof string', () => {
     expect(typeof Index.tokenize(mixMatch)).toBe('string');
   });

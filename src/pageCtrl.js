@@ -1,27 +1,13 @@
 'use strict';
-/**
- * Checks if contents of the file is in JSON format
- */
-function isJson(term) {
-  try {
-    JSON.parse(term);
-  }
-
-  catch (e) {
-    return false;
-  }
-  return true;
-}
-
 let app = angular.module('app', []);
 app.controller('pageController', ($scope) => {
   let details = {};
-  $scope.documents = $scope.fileNames = [];
+  $scope.documents = [];
+   $scope.fileNames = [];
   const read = new Index();
   $scope.fileUpload = () => {
     const fileDetails = document.getElementById('file').files[0];
-    const check = fileDetails.name.toLowerCase().match(/\.json$/);
-    if (fileDetails === undefined || !check) {
+    if (!fileDetails || !fileDetails.name.toLowerCase().match(/\.json$/)) {
       $scope.msg = '';
       $scope.message = 'Invalid Selection';
     }
@@ -31,7 +17,7 @@ app.controller('pageController', ($scope) => {
       const newFile = new FileReader();
       newFile.readAsText(fileDetails);
       newFile.onload = (file) => {
-        if (isJson(file.target.result)) {
+        if (Utility.isJson(file.target.result)) {
           const jsonFile = JSON.parse(file.target.result);
           details = {
             name: fileDetails.name,
@@ -41,6 +27,7 @@ app.controller('pageController', ($scope) => {
           if (!$scope.fileNames.includes(details.name)) {
             $scope.documents.push(details);
             $scope.fileNames.push(details.name);
+            document.getElementById('file').value = '';
           }
         }
 
@@ -52,9 +39,13 @@ app.controller('pageController', ($scope) => {
     }
   };
 
-  $scope.index = (fileIndex) => {
-    $scope.docs = $scope.documents[fileIndex].docs;
-    if ($scope.docs.length) {
+  $scope.index = () => {
+    const fileOption = document.getElementById('profession').selectedIndex;
+    if (!$scope.documents.length) {
+      $scope.message = 'Please upload a file';
+    }
+    else if ($scope.documents[fileOption].docs.length) {
+      $scope.docs = $scope.documents[fileOption].docs;
       $scope.message = '';
       $scope.docArray = read.createIndex($scope.docs);
     }

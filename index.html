@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
   <script src="src/inverted-index.js"></script>
+  <script src="src/utils.js"></script>
   <script src="src/pageCtrl.js"></script>
 </head>
 
@@ -27,7 +28,7 @@
       <div class="main-content">
         <div style="margin-left:10px; width:40%;" ng-if="!documents.length">
           <h5 style="text-align:center;">How to use this app</h5>
-          <ul style ="margin-top:-10px; line-height:16px;">
+          <ul style="margin-top:-10px; line-height:16px;">
             <li>Select and upload a file with .json file extension</li>
             <li>After successful upload, Create an index of the file by clicking <i>Select File</i></li>
             <li>Index your file of choosing from the dropdown</li>
@@ -59,29 +60,28 @@
       <div class="other">
         <div class="mdl-textfield mdl-js-textfield" id="upload">
           <input class="mdl-textfield__input" type="file" id="file" style="width: 330px;">
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="fileUpload()" style="float:right">Upload File</button>
         </div>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="fileUpload()" style="float:left; margin-top: 50px;">Upload File</button>
         <div class="error">
-          <span style="color:red; margin-left: -110px; font-weight:bold;">{{message}}</span>
+          <span style="color:red; margin-left: -90px; font-weight:bold;">{{message}}</span>
           <span style="color:green; margin-left: -110px; font-weight:bold;">{{msg}}</span>
         </div>
         <br />
-          <hr />
+        <hr />
         <div id="result">
           <p style=" width: 350px;margin-left: -50px;margin-top: 50px">
             Select File to Index and/or search below
-            </p>
+          </p>
           <div>
             <br />
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select" style="width:110px; margin-right:100px; margin-top: -30px; margin-left: -50px;">
-              <input class="mdl-textfield__input" value="Select File" type="text" id="createIndex" readonly tabIndex="-1" style="margin-left:25px;"/>
-              <label class="mdl-textfield__label" for="country" style="margin-left:40px;">Create Index</label>
-              <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="createIndex" style="z-index:999999;">
-                <li ng-if="!documents.length">No file</li>
-                <li ng-repeat="(key, value) in documents" ng-click="index(key)" ng-if="value.name">{{value.name}}</li>
-              </ul>
+            <div class="mdl-select mdl-js-select mdl-select--floating-label">
+              <select class="mdl-select__input" id="profession" placeholder="professsion" style="margin-bottom: 10px;margin-left: 40px;">
+                <option ng-if="!documents.length">Upload a file</option>
+                <option ng-repeat="(key, value) in documents" ng-if="value.name">{{value.name}}</option>
+              </select>
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="index()" id="create-index" style="float:left;margin-left: -90px;margin-top: -45px;">Create Index</button>
             </div>
-            <hr style="width: 350px; margin-top:-10px;margin-left:-90px;"/>
+            <hr style="width: 350px; margin-top:-10px;margin-left:-90px;" />
             <br />
             <div class="mdl-textfield mdl-js-textfield search">
               <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="search()" id="search" style="float:right">Search</button>

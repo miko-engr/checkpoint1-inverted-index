@@ -66,7 +66,7 @@ class Index {
    */
   searchIndex(terms, occurrence) {
     const result = {};
-    if (typeof terms !== 'string' || terms === '' || (terms.trim()) === '') {
+    if (typeof terms !== 'string' || terms === '' || terms.trim() === '') {
       return false;
     }
     const token = Index.tokenize(terms);
