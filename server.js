@@ -1,7 +1,6 @@
-'use strict';
+const connect = require('connect');
+const serve = require('serve-static');
 
-let connect = require("connect");
-let serve = require("serve-static");
-let port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
-connect().use(serve("./")).listen(port);
+connect().use(serve('./')).listen(port);
